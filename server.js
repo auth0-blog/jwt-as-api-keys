@@ -39,32 +39,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-// API token creation. Requires User Login
-app.post('/create-api-token', user.login(), (req, res) => {
-  res.status(201).send({
-    api_token: jwt.sign({
-        tenant: req.user.name,
-        scopes: getScopesFrmoRequest(req)
-      },
-      process.env.API_SECRET,
-      { expiresInMinutes: 60*5 })
-  });
-});
-
-// API calls. Require API key
-app.use('/api', jwtCheck({
-  secret: process.env.API_SECRET,
-  userProperty: 'token_payload'
-}));
-
-app.post('/api/follow', checkScopes(['follow']), (req, res) => {
-  return res.status(201).send({followed: true});
-});
-
-app.get('/api/users/names', checkScopes(['read_users', 'read_names']), (req, res) => {
-  return res.status(201).send({names: true});
-});
-
+// API Part goes here
 
 if (process.env.NODE_ENV === 'development') {
   app.use(logger('dev'));
