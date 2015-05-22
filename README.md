@@ -1,6 +1,10 @@
 # Use JWT as API keys sample
 
-This is a sample that shows how you can use JWTs as API Keys. You can read more about this in [this amazing article](https://auth0.com/blog/2014/12/02/using-json-web-tokens-as-api-keys/)
+This is a sample that shows how you can use JWTs as API Keys. You can read more about this in [this amazing article](https://auth0.com/blog/2014/12/02/using-json-web-tokens-as-api-keys/).
+
+## Explanation of this example
+
+I want to be able to call the API of MyApp.com. For that, first I must login to MyApp.com with my user credentials. Once I'm logged in, I can then create the API Key to MyApp.com which I can then use to call its API.
 
 ## Endpoints
 
