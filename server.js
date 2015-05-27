@@ -11,8 +11,6 @@ import jwt from 'jsonwebtoken';
 import jwtCheck from 'express-jwt';
 import user from './user';
 
-// Scopes
-import {checkScopes, getScopesFrmoRequest} from './scopes';
 
 let app = express();
 
@@ -24,20 +22,6 @@ app.get('/', (req, res) => {
   res.send("Server started").status(200);
 });
 
-// User Login
-app.post('/login', (req, res) => {
-  if (!req.body.username) {
-    return res.status(401).send("Send a username to login");
-  }
-
-  var user = {
-    name: req.body.username
-  };
-
-  res.status(200).send({
-    id_token: jwt.sign(user, process.env.USER_SECERT)
-  });
-});
 
 // API Part goes here
 
