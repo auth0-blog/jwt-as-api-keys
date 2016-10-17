@@ -12,7 +12,7 @@ import jwtCheck from 'express-jwt';
 import user from './user';
 
 // Scopes
-import {checkScopes, getScopesFrmoRequest} from './scopes';
+import {checkScopes, getScopesFromRequest} from './scopes';
 
 let app = express();
 
@@ -44,7 +44,7 @@ app.post('/create-api-token', user.login(), (req, res) => {
   res.status(201).send({
     api_token: jwt.sign({
         tenant: req.user.name,
-        scopes: getScopesFrmoRequest(req)
+        scopes: getScopesFromRequest(req)
       },
       process.env.API_SECRET,
       { expiresInMinutes: 60*5 })

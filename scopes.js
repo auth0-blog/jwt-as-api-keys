@@ -16,6 +16,6 @@ export function checkScopes(scopes) {
   }
 };
 
-export function getScopesFrmoRequest(req) {
+export function getScopesFromRequest(req) {
   return ['follow', 'read_users'];
 };
